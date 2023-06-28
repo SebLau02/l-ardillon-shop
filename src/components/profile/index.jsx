@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useFetch } from "../../utils/hooks";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import profileLogo from "../../utils/images/profile-logo.svg";
 import { UserContext } from "../../utils/context";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "./index.css";
 import colors from "../../utils/style/colors";

@@ -1,4 +1,5 @@
-import React, { useState, Fragment, useNavigate } from "react";
+import React, { useState, Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddAdmin() {
 	const [email, setEmail] = useState("");
