@@ -1,0 +1,58 @@
+form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	width: 60vmax;
+	border: 2px solid #c5bca0;
+	border-radius: 1vmax;
+	padding: 1vmax;
+	margin: 1vmax;
+	background: #efefef;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+		rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+		rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+label {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin: 1vmax;
+	font-weight: 900;
+	padding-left: 4vmax;
+}
+label input,
+textarea {
+	width: 60%;
+	padding: 1vmax;
+	border-radius: 1vmax;
+	border: 1px solid black;
+}
+
+label textarea {
+	height: 10vmax;
+}
+form button {
+	border: none;
+	background: linear-gradient(117deg, #94854e 0%, #c5bca0 28%, #50432a 100%);
+	border-radius: 1vmax;
+	width: 8vmax;
+	height: auto;
+	padding: 1vmax;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+form button:active {
+	transform: translateY(2px);
+	box-shadow: none;
+}
+
+.add-lure-select-type-lure {
+	width: 15vmax;
+	padding: 0.5vmax;
+	border-radius: 0.5vmax;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+		rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+		rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
