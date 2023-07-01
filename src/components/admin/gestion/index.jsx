@@ -16,9 +16,11 @@ const GlobalContainer = styled.article`
 	padding: 3vmin;
 `;
 const Container = styled.section`
+	width: 100%;
 	line-height: 2;
 `;
 const SelecteurFonction = styled.select`
+	width: 30vmax;
 	border-radius: 8px;
 	padding: 0.5vmax;
 	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,

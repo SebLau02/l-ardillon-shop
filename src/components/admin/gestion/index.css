@@ -3,7 +3,8 @@ form {
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
-	width: 60vmax;
+	max-width: 60vmax;
+	width: 95%;
 	border: 2px solid #c5bca0;
 	border-radius: 1vmax;
 	padding: 1vmax;
