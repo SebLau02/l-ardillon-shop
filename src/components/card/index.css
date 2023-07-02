@@ -2,6 +2,9 @@
 	width: 100%;
 	height: 100%;
 }
+.card-global-container * {
+	margin: 0.5vmax;
+}
 
 /* ----------------------------------------------------------- */
 
@@ -10,7 +13,7 @@
 	grid-column: span 1;
 	grid-row: span 2;
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 }
@@ -25,6 +28,7 @@
 .arrow-left {
 	top: 65%;
 	left: 0;
+	transform: translateX(50%);
 }
 .arrow-right {
 	top: 65%;
@@ -32,28 +36,33 @@
 	transform: translateX(-50%) rotate(180deg);
 }
 .card-product-image {
-	width: 35vmax;
-	margin-bottom: 5vmin;
+	width: 80%;
 }
 .product-image-caroussel {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	height: 100%;
+	position: relative;
+	width: 40vmax;
+	height: 40vmax;
+	border: 3px solid #efefef;
+	border-radius: 2vmax;
 }
 .name-brand-container {
 	margin-bottom: 5vmin;
+	border-radius: 1vmax;
+	width: 20vmax;
+	text-align: center;
+	background: #c5bca0;
 }
 .name-brand-container h1 {
 	font-size: clamp(1.6rem, 3vw, 2rem);
 }
 .product-card {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: 1fr 2fr;
-	grid-gap: 2vmin;
-	padding: 5vmin 3vmin;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 .card-product-description {
 	grid-column: 3/5;
@@ -61,8 +70,9 @@
 }
 .descriptions {
 	height: auto;
-	min-width: auto;
-	padding: 2vmin;
+	width: 40vmax;
+	padding: 1vmax;
+	margin-top: 1vmax;
 }
 .card-product-description p {
 	font-size: clamp(1.2rem, 2vw, 1.6rem);
@@ -71,10 +81,10 @@
 	font-size: clamp(0.8rem, 2vw, 1.2rem);
 	grid-column: 3/4;
 	grid-row: 1/2;
-	width: 13vmin;
-	height: 6vmin;
+	width: 8vmax;
+	height: 3vmax;
 	border: none;
-	border-radius: 10px;
+	border-radius: 1vmax;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -85,10 +95,10 @@
 }
 
 .name-price-container {
-	grid-column: 2/4;
-	grid-row: 2/3;
-	align-self: center;
-	font-size: clamp(1.2rem, 2vw, 1.6rem);
+	width: 40vmax;
+	padding: 1vmax;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 }
 .name-price-container :nth-child(2) {
 	padding: 2vmin 0;
@@ -97,8 +107,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 10vmax;
-	border: 1px solid black;
+	flex-wrap: wrap;
+	min-height: 10vmax;
+	height: auto;
+	border: 1px solid #c5bca0;
 	border-radius: 10px;
 	margin: 3vmin;
 	padding: 2vmin;

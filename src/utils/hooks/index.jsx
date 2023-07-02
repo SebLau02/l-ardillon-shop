@@ -9,6 +9,7 @@ export function useFetch(url) {
 	useEffect(() => {
 		if (!url) return;
 		setLoading(true);
+
 		async function fetchData() {
 			try {
 				const response = await fetch(url, {

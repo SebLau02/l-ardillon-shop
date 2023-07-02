@@ -17,10 +17,13 @@ const ArticleDatasGlobalContainer = styled.div`
 	flex-direction: column;
 `;
 const ArticleDatasContainer = styled.div`
-	height: 6vmax;
+	height: auto;
+	min-height: 8vmax;
 	margin-top: 3vh;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
 	border: 3px solid ${colors.kaki};
 	border-radius: 15px;
 	width: 100%;
@@ -37,7 +40,8 @@ const ArticlePrice = styled.p`
 `;
 const ArticleQuantite = styled.input`
 	width: 7vmin;
-	height: 3vmin;
+	min-height: 3vmin;
+	height: auto;
 	border: 1px solid ${colors.kaki};
 	border-radius: 5px;
 	align-self: center;
@@ -67,7 +71,8 @@ const RemoveProduct = styled.img`
 	width: 3vmax;
 `;
 const ImageColor = styled.img`
-	height: 100%;
+	width: 5vmax;
+	object-fit: contain;
 `;
 
 const TotalContainer = styled.div`
@@ -79,7 +84,7 @@ const TotalContainer = styled.div`
 	height: 15vmax;
 	background: ${colors.marron};
 	border-radius: 10px;
-	margin: 3vmin 70vw;
+	margin: 3vmax;
 `;
 
 const Payer = styled.button`

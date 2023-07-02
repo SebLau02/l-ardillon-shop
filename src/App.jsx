@@ -11,10 +11,14 @@ import AddAdress from "./components/profile/addAdress";
 import AddLeurre from "./components/admin/gestion/addLeurre";
 import Gestion from "./components/admin/gestion";
 import AddAdmin from "./components/admin/signup";
+import Accueil from "./components/accueil";
 
 import { Routes, Route } from "react-router-dom";
 import { useFetch } from "./utils/hooks";
 import { UserProvider } from "./utils/context";
+import apiUrl from "./utils/api";
+
+//-----------------------------------------------------------------------------------------------
 
 function App() {
   const [filteredLure, setFilteredLure] = useState([]);
@@ -30,12 +34,9 @@ function App() {
   const [totalCart, setTotalCart] = useState(0);
   const [totalArticle, setTotalArticle] = useState();
 
-  const { data, isLoading, error } = useFetch(
-    `https://server-test-vpha.vercel.app/api/leurres`
-  );
+  const { data, isLoading, error } = useFetch(apiUrl + `/api/leurres`);
 
   const leurres = Object.values(data);
-
   return (
     <div className="App">
       <UserProvider>
@@ -48,6 +49,7 @@ function App() {
           setSearchValue={setSearchValue}
         />
         <Routes>
+          <Route path="/" element={<Accueil leurres={leurres} />} />
           <Route
             path="/leurres"
             element={
@@ -57,6 +59,8 @@ function App() {
                 filteredLure={filteredLure}
                 leurres={leurres}
                 searchValue={searchValue}
+                isLoading={isLoading}
+                error={error}
               />
             }
           />
@@ -85,8 +89,6 @@ function App() {
               />
             }
           />
-        </Routes>
-        <Routes>
           <Route path="/user/login" element={<Login />} />
           <Route path="/user/signup" element={<Signup />} />
 
@@ -95,8 +97,6 @@ function App() {
             path="/user/profile/:userId/add-postale-adress"
             element={<AddAdress />}
           />
-        </Routes>
-        <Routes>
           <Route
             path="/admin/leurres/addlure"
             element={<AddLeurre leurres={leurres} />}

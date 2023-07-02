@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Fragment } from "react";
 import { useFetch } from "../../utils/hooks";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import profileLogo from "../../utils/images/profile-logo.svg";
@@ -7,6 +7,9 @@ import styled from "styled-components";
 import "./index.css";
 import colors from "../../utils/style/colors";
 import Burger from "../../utils/images/burger.svg";
+import Loader from "../loader";
+import Error from "../error";
+import apiUrl from "../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 const Article = styled.article`
@@ -174,18 +177,18 @@ export default function Profile() {
 
 	//********** recuperation des donnés de l'utilisateur **********
 
-	const { data, error } = useFetch(
-		`https://server-test-vpha.vercel.app/api/profile/${userId.userId}`
+	const { data, isLoading, error } = useFetch(
+		apiUrl + `/api/profile/${userId.userId}`
 	);
 
 	const datas = Object.values(data);
-	const user = datas.filter((item) => item !== null).shift();
+	const user = datas && datas.filter((item) => item !== null).shift();
 	const role = user?.role;
 
 	//-----------------------------------------------------------------------------------------------
 
 	const deconnexion = () => {
-		fetch("http://localhost:3000/api/add-inactive-token", {
+		fetch(apiUrl + "/api/add-inactive-token", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -209,105 +212,121 @@ export default function Profile() {
 	//-----------------------------------------------------------------------------------------------
 
 	return (
-		<Article>
-			<ProfileContainer>
-				<ProfileTitle>Profile</ProfileTitle>
-				<ProfileCard>
-					<ProfileLogo
-						src={profileLogo}
-						alt="photo de profile de l'utilisateur"
-					/>
+		<>
+			{isLoading ? (
+				<Loader />
+			) : error ? (
+				<Error />
+			) : (
+				<Article>
+					<ProfileContainer>
+						<ProfileTitle>Profile</ProfileTitle>
+						<ProfileCard>
+							<ProfileLogo
+								src={profileLogo}
+								alt="photo de profile de l'utilisateur"
+							/>
 
-					<div>
-						<p>
-							<Nom>{user?.nom.toUpperCase()}</Nom>
-							{" " + user?.prenom}
-						</p>
-					</div>
-				</ProfileCard>
-			</ProfileContainer>
-			<AdresseContainer>
-				<Buttons
-					aria-label="afficher mes adresses"
-					onClick={() => setIsAdresseVisible(!isAdresseVisible)}
-				>
-					Adresses
-				</Buttons>
-				{isAdresseVisible === true && (
-					<Adresses>
-						<div>
-							<h3>Adresse-mail actuel: </h3>
-							<span>{user?.email}</span>
-						</div>
-						<div>
-							<h3>Adresse de livraison:</h3>
+							<div>
+								<p>
+									<Nom>{user?.nom.toUpperCase()}</Nom>
+									{" " + user?.prenom}
+								</p>
+							</div>
+						</ProfileCard>
+					</ProfileContainer>
+					<AdresseContainer>
+						<Buttons
+							aria-label="afficher mes adresses"
+							onClick={() =>
+								setIsAdresseVisible(!isAdresseVisible)
+							}
+						>
+							Adresses
+						</Buttons>
+						{isAdresseVisible === true && (
+							<Adresses>
+								<div>
+									<h3>Adresse-mail actuel: </h3>
+									<span>{user?.email}</span>
+								</div>
+								<div>
+									<h3>Adresse de livraison:</h3>
 
-							{user?.adresse[0] ? (
-								<span>
-									{user?.adresse[0].numero +
-										" " +
-										user?.adresse[0].nomVoie +
-										", " +
-										user?.adresse[0].codePostale +
-										", " +
-										user?.adresse[0].ville}
-								</span>
-							) : (
-								<Link to={`add-postale-adress`}>
-									Ajouter une adresse postale
-								</Link>
-							)}
-						</div>
-					</Adresses>
-				)}
-			</AdresseContainer>
+									{user?.adresse[0] ? (
+										<span>
+											{user?.adresse[0].numero +
+												" " +
+												user?.adresse[0].nomVoie +
+												", " +
+												user?.adresse[0].codePostale +
+												", " +
+												user?.adresse[0].ville}
+										</span>
+									) : (
+										<Link to={`add-postale-adress`}>
+											Ajouter une adresse postale
+										</Link>
+									)}
+								</div>
+							</Adresses>
+						)}
+					</AdresseContainer>
 
-			<CommandesContainer>
-				<Buttons
-					aria-label="afficher mes commandes en cours"
-					onClick={() => setIsCommandesVisible(!isCommandesVisible)}
-				>
-					Suivre ma commande
-				</Buttons>
-				{isCommandesVisible === true && <p>Mes commandes</p>}
-			</CommandesContainer>
-			<BurgerMenu
-				onClick={() => {
-					setIsActiveMenu(!isActiveMenu);
-				}}
-			>
-				<img src={Burger} alt="menu logo" />
-			</BurgerMenu>
-			{isActiveMenu === true && (
-				<MenuSection>
-					<Deconexion onClick={deconnexion}>Déconnexion</Deconexion>
-					<p>Mon historique de commande</p>
-					<p>Changer mes identifiants</p>
+					<CommandesContainer>
+						<Buttons
+							aria-label="afficher mes commandes en cours"
+							onClick={() =>
+								setIsCommandesVisible(!isCommandesVisible)
+							}
+						>
+							Suivre ma commande
+						</Buttons>
+						{isCommandesVisible === true && <p>Mes commandes</p>}
+					</CommandesContainer>
+					<BurgerMenu
+						onClick={() => {
+							setIsActiveMenu(!isActiveMenu);
+						}}
+					>
+						<img src={Burger} alt="menu logo" />
+					</BurgerMenu>
+					{isActiveMenu === true && (
+						<MenuSection>
+							<Deconexion onClick={deconnexion}>
+								Déconnexion
+							</Deconexion>
+							<p>Mon historique de commande</p>
+							<p>Changer mes identifiants</p>
 
-					{role === "admin" && (
-						<div>
-							<p
-								onClick={() =>
-									setGestionHandleClick(!gestionHandleClick)
-								}
-							>
-								Admin
-							</p>
-							{gestionHandleClick === true && (
-								<LinkToGestion>
-									<Link
-										key=""
-										to="/admin/gestion"
-										state={{ role }}
+							{role === "admin" && (
+								<div>
+									<p
+										onClick={() =>
+											setGestionHandleClick(
+												!gestionHandleClick
+											)
+										}
 									>
-										Gestion
-									</Link>
-								</LinkToGestion>
+										Admin
+									</p>
+									{gestionHandleClick === true && (
+										<LinkToGestion>
+											<Link
+												key=""
+												to="/admin/gestion"
+												state={{ role }}
+											>
+												Gestion
+											</Link>
+										</LinkToGestion>
+									)}
+								</div>
 							)}
-						</div>
+						</MenuSection>
 					)}
-				</MenuSection>
+				</Article>
 			)}
-		</Article>
+		</>
 	);
 }

@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../utils/context";
 import colors from "../../../utils/style/colors";
+import apiUrl from "../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
 const LogForm = styled.form`
 	width: 40vmax;
-	margin: 20vmax auto;
+	margin: 10vmax auto;
 
 	label input {
 		width: 22vmax;
@@ -65,7 +66,7 @@ export default function Login() {
 	const logFunc = (event) => {
 		event.preventDefault();
 
-		fetch("https://server-test-vpha.vercel.app/api/auth/login", {
+		fetch(apiUrl + "/api/auth/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

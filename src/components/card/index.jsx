@@ -6,6 +6,9 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import Arrow from "../../utils/images/Arrow.svg";
 import Close from "../../utils/images/close.svg";
+import Loader from "../loader";
+import Error from "../error";
+import apiUrl from "../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -21,11 +24,12 @@ const Ajouter = styled.button`
 const Description = styled.div`
 	border: 2px solid ${colors.grey};
 	border-radius: 20px;
+
+	p {
+		margin-top: 1vmax;
+	}
 `;
-const Image = styled.img`
-	border: 2px solid ${colors.grey};
-	border-radius: 20px;
-`;
+const Image = styled.img``;
 
 const ColorImageGreatSize = styled.img`
 	width: 40vmax;
@@ -50,8 +54,9 @@ export default function Card({
 	const [elargedImage, setElargedImage] = useState();
 
 	const articleId = Object.values(useParams());
-	const { data, isLoading } = useFetch(
-		`https://server-test-vpha.vercel.app/api/leurres/${articleId}`
+
+	const { data, isLoading, error } = useFetch(
+		apiUrl + `/api/leurres/${articleId}`
 	);
 
 	const articleDatas = Object.values(data).filter((item) => item !== null)[0];
@@ -125,7 +130,9 @@ export default function Card({
 	return (
 		<>
 			{isLoading ? (
-				<p>patient !</p>
+				<Loader />
+			) : error ? (
+				<Error />
 			) : (
 				<article className="card-global-container">
 					<div className="product-card">
@@ -187,7 +194,7 @@ export default function Card({
 							>
 								<img
 									src={item.image}
-									alt=""
+									alt="coloris du leurre"
 									className="color-image"
 									key={"image" + item.id}
 									onClick={() => {

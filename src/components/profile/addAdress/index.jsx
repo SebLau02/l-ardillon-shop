@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../../../utils/context";
 import styled from "styled-components";
 import colors from "../../../utils/style/colors";
+import apiUrl from "../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -64,17 +65,14 @@ export default function AddAdress() {
 			complement,
 		};
 
-		fetch(
-			`https://server-test-vpha.vercel.app/api/auth/add-adresse/${userId}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify(adress),
-			}
-		)
+		fetch(apiUrl + `/api/auth/add-adresse/${userId}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(adress),
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setRes(data.message);

@@ -1,5 +1,8 @@
 import React, { useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import apiUrl from "../../../utils/api";
+
+//-----------------------------------------------------------------------------------------------
 
 export default function AddAdmin() {
 	const [email, setEmail] = useState("");
@@ -12,7 +15,7 @@ export default function AddAdmin() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		fetch("https://server-test-vpha.vercel.app/api/admin/signup", {
+		fetch(apiUrl + "/api/admin/signup", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

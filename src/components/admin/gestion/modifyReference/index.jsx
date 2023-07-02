@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
+import apiUrl from "../../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -86,17 +87,14 @@ export default function ModifyReference({
 	const deleteRefDeclinFunc = (e) => {
 		e.preventDefault();
 
-		fetch(
-			`https://server-test-vpha.vercel.app/api/leurres/delete/delete-ref-declination`,
-			{
-				method: "delete",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify(ids),
-			}
-		)
+		fetch(apiUrl`/api/leurres/delete/delete-ref-declination`, {
+			method: "delete",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(ids),
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setServerRes(data.message);

@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 import colors from "../../../../utils/style/colors";
+import apiUrl from "../../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -82,17 +83,14 @@ export default function StockManagement({ leurres, token, Button }) {
 	const stockManagementFunc = (e) => {
 		e.preventDefault();
 
-		fetch(
-			`https://server-test-vpha.vercel.app/api/leurres/stock-management`,
-			{
-				method: "put",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify(reqBody),
-			}
-		)
+		fetch(apiUrl + `/api/leurres/stock-management`, {
+			method: "put",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(reqBody),
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setServRes(data.message);

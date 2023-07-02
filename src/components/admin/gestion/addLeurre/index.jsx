@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HardLureForm from "./hardLureForm";
 import SoftLureForm from "./softLureForm";
 import MetallicLureForm from "./metallicLureForm";
+import apiUrl from "../../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -61,17 +62,14 @@ export default function AddLeurre({ leurres, token }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		fetch(
-			`https://server-test-vpha.vercel.app/api/leurres?typeLeurre=${typeLure}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify(newLeurre),
-			}
-		)
+		fetch(apiUrl + `/api/leurres?typeLeurre=${typeLure}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(newLeurre),
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setAddLureRes(data.message);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
 import { useFetch } from "../../utils/hooks";
+import apiUrl from "../api";
 
 export const UserContext = createContext();
 
@@ -8,9 +9,7 @@ export const UserProvider = ({ children }) => {
 	const [token, setToken] = useState("");
 	const [isConnected, setIsConnected] = useState(false);
 
-	const { data, isLoading, error } = useFetch(
-		`https://server-test-vpha.vercel.app/api/verify-token`
-	);
+	const { data, isLoading, error } = useFetch(apiUrl + `/api/verify-token`);
 
 	useEffect(() => {
 		setToken(data.token);

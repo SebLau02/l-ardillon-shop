@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import colors from "../../../../utils/style/colors";
+import apiUrl from "../../../../utils/api";
 
 //-----------------------------------------------------------------------------------------------
 
@@ -77,17 +78,14 @@ export default function AddReferenceDeclination({ leurres, token }) {
 	const addReferenceDeclinationSubmit = (e) => {
 		e.preventDefault();
 
-		fetch(
-			`https://server-test-vpha.vercel.app/api/leurres/${filteredLureId}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify(newReferenceDeclination),
-			}
-		)
+		fetch(apiUrl + `/api/leurres/${filteredLureId}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(newReferenceDeclination),
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setAddLureRes(data.message);

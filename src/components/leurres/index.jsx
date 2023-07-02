@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./index.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../utils/style/colors.jsx";
+import Loader from "../loader";
+import Error from "../error";
 
 const StyledLink = styled(Link)`
 	display: grid;
@@ -29,74 +31,82 @@ export default function Leurres({
 	filteredLure,
 	leurres,
 	searchValue,
+	isLoading,
+	error,
 }) {
-	const navigate = useNavigate();
-
 	return (
-		<article className="products-container">
-			{searchValue?.length > 0 || filteredLure.length > 0
-				? filteredLure?.map(
-						(item) =>
-							item.colors.length > 0 && (
-								<StyledLink
-									to={`/article/${item._id}`}
-									key={item._id}
-								>
-									<div className="img-container">
-										<img
-											src={item.colors[0].image}
-											alt="illustration leurre"
-											className="product-image"
-										/>
-									</div>
+		<>
+			{isLoading ? (
+				<Loader />
+			) : error ? (
+				<Error />
+			) : (
+				<article className="products-container">
+					{searchValue?.length > 0 || filteredLure.length > 0
+						? filteredLure?.map(
+								(item) =>
+									item.colors.length > 0 && (
+										<StyledLink
+											to={`/article/${item._id}`}
+											key={item._id}
+										>
+											<div className="img-container">
+												<img
+													src={item.colors[0].image}
+													alt="illustration leurre"
+													className="product-image"
+												/>
+											</div>
 
-									<NameBrandsize className="name-brand-size-container">
-										<h3 className="product-name">
-											{item.name}
-										</h3>
-										<h3 className="product-brand">
-											{item.marque}
-										</h3>
-										{item.size > 0 && (
-											<h3 className="product-price">
-												{item.size} mm
-											</h3>
-										)}
-									</NameBrandsize>
-								</StyledLink>
-							)
-				  )
-				: leurres?.map(
-						(item) =>
-							item.colors.length > 0 && (
-								<StyledLink
-									to={`/article/${item._id}`}
-									key={item._id}
-								>
-									<div className="img-container">
-										<img
-											src={item.colors[0].image}
-											alt="illustration leurre"
-											className="product-image"
-										/>
-									</div>
+											<NameBrandsize className="name-brand-size-container">
+												<h3 className="product-name">
+													{item.name}
+												</h3>
+												<h3 className="product-brand">
+													{item.marque}
+												</h3>
+												{item.size > 0 && (
+													<h3 className="product-price">
+														{item.size} mm
+													</h3>
+												)}
+											</NameBrandsize>
+										</StyledLink>
+									)
+						  )
+						: leurres?.map(
+								(item) =>
+									item.colors.length > 0 && (
+										<StyledLink
+											to={`/article/${item._id}`}
+											key={item._id}
+										>
+											<div className="img-container">
+												<img
+													src={item.colors[0].image}
+													alt="illustration leurre"
+													className="product-image"
+												/>
+											</div>
 
-									<NameBrandsize className="name-brand-size-container">
-										<h3 className="product-name">
-											{item.name}
-										</h3>
-										<h3 className="product-brand">
-											{item.marque}
-										</h3>
-										{item.size > 0 && (
-											<h3 className="product-price">
-												{item.size} mm
-											</h3>
-										)}
-									</NameBrandsize>
-								</StyledLink>
-							)
-				  )}
-		</article>
+											<NameBrandsize className="name-brand-size-container">
+												<h3 className="product-name">
+													{item.name}
+												</h3>
+												<h3 className="product-brand">
+													{item.marque}
+												</h3>
+												{item.size > 0 && (
+													<h3 className="product-price">
+														{item.size} mm
+													</h3>
+												)}
+											</NameBrandsize>
+										</StyledLink>
+									)
+						  )}
+				</article>
+			)}
+		</>
 	);
 }
