@@ -29,7 +29,7 @@ function App() {
   const [articlesCart, setArticlesCart] = useState(
     localStorage.getItem("localCart")
       ? JSON.parse(localStorage.getItem("localCart"))
-      : []
+      : [],
   );
   const [totalCart, setTotalCart] = useState(0);
   const [totalArticle, setTotalArticle] = useState();
