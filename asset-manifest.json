@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/l-ardillon-shop/static/css/main.db221252.css",
-    "main.js": "/l-ardillon-shop/static/js/main.f5e58c4a.js",
+    "main.js": "/l-ardillon-shop/static/js/main.eff868a2.js",
     "static/js/787.ca8c0bbc.chunk.js": "/l-ardillon-shop/static/js/787.ca8c0bbc.chunk.js",
     "static/media/logo-hook.png": "/l-ardillon-shop/static/media/logo-hook.acdcfa831d512a66c253.png",
     "static/media/corp.svg": "/l-ardillon-shop/static/media/corp.3b660f502263d40680229947086f16dc.svg",
@@ -14,11 +14,11 @@
     "static/media/burger.svg": "/l-ardillon-shop/static/media/burger.fc12fbd678bea2ce4ec9524cbe12a170.svg",
     "static/media/close.svg": "/l-ardillon-shop/static/media/close.ae8de706cb336e0579adee6a13a9046e.svg",
     "main.db221252.css.map": "/l-ardillon-shop/static/css/main.db221252.css.map",
-    "main.f5e58c4a.js.map": "/l-ardillon-shop/static/js/main.f5e58c4a.js.map",
+    "main.eff868a2.js.map": "/l-ardillon-shop/static/js/main.eff868a2.js.map",
     "787.ca8c0bbc.chunk.js.map": "/l-ardillon-shop/static/js/787.ca8c0bbc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.db221252.css",
-    "static/js/main.f5e58c4a.js"
+    "static/js/main.eff868a2.js"
   ]
 }
