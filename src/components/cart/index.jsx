@@ -129,7 +129,7 @@ export default function Cart({
 		let articleId = el.id;
 
 		const filteredArticlesCart = articlesCart.filter(
-			(item) => item.id !== articleId
+			(item) => item.id !== articleId,
 		);
 		setArticlesCart(filteredArticlesCart);
 	};
@@ -182,7 +182,10 @@ export default function Cart({
 					{articlesCart?.map((item) => (
 						<ArticleDatasContainer key={item.id}>
 							<IdentifiantContainer>
-								<ImageColor src={item.image} alt="" />
+								<ImageColor
+									src={item.image}
+									alt={item.colorName}
+								/>
 								<p>{item.marque}</p>
 								<p>{item.name}</p>
 								<p>{item.colorName}</p>

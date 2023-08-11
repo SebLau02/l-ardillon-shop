@@ -20,6 +20,10 @@
 .arrow-caroussel-nav {
 	position: absolute;
 	z-index: 5;
+	background: none;
+	border: none;
+}
+.arrow-caroussel-nav img {
 	height: 4vmax;
 }
 .arrow-caroussel-nav:hover {

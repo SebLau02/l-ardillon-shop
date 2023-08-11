@@ -31,7 +31,21 @@ const CategorySection = styled.section`
 		border-radius: 0.8vmax;
 		padding: 0.3vmax;
 		font-size: clamp(0.8rem, 2vw, 1.2rem);
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 	}
+`;
+
+const ToLure = styled.button`
+	font-size: clamp(0.8rem, 2vw, 1.2rem);
+	border: none;
+	margin: 1vmax;
+	border-radius: 0.8vmax;
+	padding: 0.3vmax;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 `;
 
 //-----------------------------------------------------------------------------------------------
@@ -63,7 +77,7 @@ export default function SearchBar({
 						el.famille.toLowerCase().includes(value) ||
 						el.description.toLowerCase().includes(value)
 					);
-				})
+				}),
 			);
 		}
 	};
@@ -76,7 +90,7 @@ export default function SearchBar({
 					return el.category
 						.toLowerCase()
 						.includes(e.target.value.toLowerCase());
-				})
+				}),
 			);
 		} else {
 			setFilteredLure(leurres);
@@ -93,7 +107,7 @@ export default function SearchBar({
 				>
 					<img
 						src={logoHook}
-						alt="retourner au meni principale"
+						alt="retourner au menu principale"
 						className="logo-image"
 					/>
 				</div>
@@ -126,6 +140,7 @@ export default function SearchBar({
 				</div>
 			</section>
 			<CategorySection>
+				<ToLure onClick={() => navigate("/leurres")}>Leurres</ToLure>
 				<select value={typeLure} onChange={handleChangeCategory}>
 					<option value="tout">Tout</option>
 					<option value="leurre-dur">Leurre dur</option>

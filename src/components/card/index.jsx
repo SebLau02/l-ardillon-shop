@@ -56,17 +56,22 @@ export default function Card({
 	const articleId = Object.values(useParams());
 
 	const { data, isLoading, error } = useFetch(
-		apiUrl + `/api/leurres/${articleId}`
+		apiUrl + `/api/leurres/${articleId}`,
 	);
 
 	const articleDatas = Object.values(data).filter((item) => item !== null)[0];
-	const articlesImages = articleDatas?.colors?.map((item) => item.image);
+	const articlesImages = articleDatas?.colors?.map((item) => ({
+		image: item.image,
+		colorName: item.colorName,
+	}));
 
 	useEffect(() => {
 		setInStock(articleDatas?.colors.inStock);
 	}, [inStock, articleDatas]);
 
 	const addToCart = (item) => {
+		//********** je créer un objet qui contient les données de mon article **********
+
 		const article = {
 			name: articleDatas.name,
 			marque: articleDatas.marque,
@@ -77,21 +82,26 @@ export default function Card({
 			image: item.image,
 		};
 
+		//********** si mon panier est vide j'ajoute l'article **********
+
 		if (articlesCart?.length === 0) {
 			setArticlesCart([...articlesCart, article]);
 		} else {
-			let articleExiste = false;
+			//********** si le produit est déjà dans mon panier alors j'incrémente sa quantité de 1 **********
+
+			//********** sinon je l'ajoute dans mon panier **********
+
+			let isArticleExist = false;
+
 			articlesCart?.forEach((el) => {
 				if (Object.values(el).includes(article.id)) {
 					el.quantite++;
-					articleExiste = true;
+					isArticleExist = true;
 				}
 			});
 
-			if (!articleExiste) {
+			if (!isArticleExist) {
 				setArticlesCart([...articlesCart, article]);
-			} else {
-				setArticlesCart([...articlesCart]);
 			}
 		}
 
@@ -143,21 +153,27 @@ export default function Card({
 							</div>
 
 							<div className="product-image-caroussel">
-								<img
-									src={Arrow}
-									alt="image précédente"
-									className="arrow-caroussel-nav arrow-left"
+								<button
 									onClick={carrousselNavLeft}
-								/>
-								<img
-									src={Arrow}
-									alt="image suivante"
-									className="arrow-caroussel-nav arrow-right"
+									className="arrow-caroussel-nav arrow-left"
+								>
+									<img src={Arrow} alt="image précédente" />
+								</button>
+								<button
 									onClick={carrousselNavRight}
-								/>
+									className="arrow-caroussel-nav arrow-right"
+								>
+									<img src={Arrow} alt="image suivante" />
+								</button>
 								<Image
-									src={articlesImages[articlesImagesIndex]}
-									alt="image du leurre"
+									src={
+										articlesImages[articlesImagesIndex]
+											.image
+									}
+									alt={
+										articlesImages[articlesImagesIndex]
+											.colorName
+									}
 									className="card-product-image"
 								/>
 							</div>

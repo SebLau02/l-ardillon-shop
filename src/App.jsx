@@ -31,6 +31,7 @@ function App() {
       ? JSON.parse(localStorage.getItem("localCart"))
       : [],
   );
+
   const [totalCart, setTotalCart] = useState(0);
   const [totalArticle, setTotalArticle] = useState();
 
@@ -49,7 +50,20 @@ function App() {
           setSearchValue={setSearchValue}
         />
         <Routes>
-          <Route path="/" element={<Accueil leurres={leurres} />} />
+          <Route
+            path="/"
+            element={
+              <Accueil
+                leurres={leurres}
+                isLoading={isLoading}
+                error={error}
+                setTotalCart={setTotalCart}
+                articlesCart={articlesCart}
+                setArticlesCart={setArticlesCart}
+                totalCart={totalCart}
+              />
+            }
+          />
           <Route
             path="/leurres"
             element={
@@ -68,8 +82,8 @@ function App() {
             path="/panier"
             element={
               <Cart
-                articlesCart={articlesCart}
                 setTotalCart={setTotalCart}
+                articlesCart={articlesCart}
                 setArticlesCart={setArticlesCart}
                 totalCart={totalCart}
               />

@@ -117,7 +117,11 @@ const MenuSection = styled.section`
 	z-index: 4;
 	height: 100vh;
 	width: 20vmax;
-	background: ${colors.marron};
+	background: linear-gradient(
+		180deg,
+		${colors.marronDark},
+		${colors.marron} 16%
+	);
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	padding: 10vmin 5vmin;
@@ -178,7 +182,7 @@ export default function Profile() {
 	//********** recuperation des donnés de l'utilisateur **********
 
 	const { data, isLoading, error } = useFetch(
-		apiUrl + `/api/profile/${userId.userId}`
+		apiUrl + `/api/profile/${userId.userId}`,
 	);
 
 	const datas = Object.values(data);
@@ -304,7 +308,7 @@ export default function Profile() {
 									<p
 										onClick={() =>
 											setGestionHandleClick(
-												!gestionHandleClick
+												!gestionHandleClick,
 											)
 										}
 									>
