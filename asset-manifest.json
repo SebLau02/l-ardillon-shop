@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/l-ardillon-shop/static/css/main.db221252.css",
-    "main.js": "/l-ardillon-shop/static/js/main.eff868a2.js",
+    "main.css": "/l-ardillon-shop/static/css/main.4990b81f.css",
+    "main.js": "/l-ardillon-shop/static/js/main.764ae53c.js",
     "static/js/787.ca8c0bbc.chunk.js": "/l-ardillon-shop/static/js/787.ca8c0bbc.chunk.js",
     "static/media/logo-hook.png": "/l-ardillon-shop/static/media/logo-hook.acdcfa831d512a66c253.png",
     "static/media/corp.svg": "/l-ardillon-shop/static/media/corp.3b660f502263d40680229947086f16dc.svg",
     "static/media/rod.svg": "/l-ardillon-shop/static/media/rod.cc125f6344090ccb17287a2f9a659cdc.svg",
     "static/media/profile-logo.svg": "/l-ardillon-shop/static/media/profile-logo.0a10e58ecc44a1fb5e83ff75d006033c.svg",
+    "static/media/cart.svg": "/l-ardillon-shop/static/media/cart.d8e8c4453d5fdc4e78a05ac800392e0b.svg",
     "index.html": "/l-ardillon-shop/index.html",
     "static/media/poignee.svg": "/l-ardillon-shop/static/media/poignee.b287236019573e0cc5a3bec072affeae.svg",
-    "static/media/cart.svg": "/l-ardillon-shop/static/media/cart.eb39e837015530174074941e56007d2f.svg",
     "static/media/Arrow.svg": "/l-ardillon-shop/static/media/Arrow.be2d470af45bb2f6be6d47e377cc8621.svg",
     "static/media/burger.svg": "/l-ardillon-shop/static/media/burger.fc12fbd678bea2ce4ec9524cbe12a170.svg",
     "static/media/close.svg": "/l-ardillon-shop/static/media/close.ae8de706cb336e0579adee6a13a9046e.svg",
-    "main.db221252.css.map": "/l-ardillon-shop/static/css/main.db221252.css.map",
-    "main.eff868a2.js.map": "/l-ardillon-shop/static/js/main.eff868a2.js.map",
+    "main.4990b81f.css.map": "/l-ardillon-shop/static/css/main.4990b81f.css.map",
+    "main.764ae53c.js.map": "/l-ardillon-shop/static/js/main.764ae53c.js.map",
     "787.ca8c0bbc.chunk.js.map": "/l-ardillon-shop/static/js/787.ca8c0bbc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db221252.css",
-    "static/js/main.eff868a2.js"
+    "static/css/main.4990b81f.css",
+    "static/js/main.764ae53c.js"
   ]
 }
