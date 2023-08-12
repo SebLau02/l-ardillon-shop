@@ -47,6 +47,8 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	min-width: 280px;
+	min-height: 280px;
 	width: 40vmax;
 	height: 40vmax;
 	border: 3px solid #efefef;
@@ -58,6 +60,8 @@
 	width: 20vmax;
 	text-align: center;
 	background: #c5bca0;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .name-brand-container h1 {
 	font-size: clamp(1.6rem, 3vw, 2rem);

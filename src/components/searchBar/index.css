@@ -11,42 +11,37 @@
 	background: linear-gradient(180deg, #94854e 30%, #c5bca0 100%);
 }
 .logo-container,
-.profile-cart-input-container {
+.profile-cart-input-container,
+.img-link {
 	height: 100%;
 	width: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+.img-link {
+	position: relative;
+}
 .logo-image {
 	width: auto;
-	height: 80%;
-	margin-left: 10px;
+	height: 100%;
 }
 
 .profile-logo,
 .cart-logo {
-	margin: 0 20px;
-	width: 4vmax;
+	margin: 0 3vmin;
+	width: 3vmax;
 	height: auto;
 }
 .search-input {
-	width: 40vw;
-	height: 5vh;
-	border-radius: 20px;
-	padding: 5px;
+	width: 50vw;
+	height: 4vmax;
+	border-radius: 3vmax;
+	padding: 0 2vmin;
 	border: none;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-.img-link {
-	width: auto;
-	height: 100%;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 .total-cart {
 	position: absolute;

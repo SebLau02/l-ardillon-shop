@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import styled from "styled-components";
 import Close from "../../utils/images/close.svg";
 import colors from "../../utils/style/colors";
@@ -9,32 +9,42 @@ const CartContainer = styled.section`
 	padding: 5vmin;
 	width: 100%;
 `;
-const ArticleDatasGlobalContainer = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-`;
+
 const ArticleDatasContainer = styled.div`
 	height: auto;
 	min-height: 8vmax;
 	margin-top: 3vh;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
 	border: 3px solid ${colors.kaki};
 	border-radius: 15px;
 	width: 100%;
-	padding: 1vmin;
+	padding: 3vmin;
+
+	@media (max-width: 425px) {
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-columns: 1fr;
+		grid-gap: 1vmax;
+
+		:nth-child(2) {
+			width: 60%;
+			grid-row: 2/3;
+			justify-self: center;
+			height: 100%;
+		}
+	}
 `;
 const ArticlePriceQuantite = styled.div`
-	margin-right: 3vmin;
+	height: 80%;
 	display: flex;
+	justify-content: space-between;
+	background: ${colors.marron};
+	padding: 0 2vmax;
+	border-radius: 1vmax;
+	justify-self: end;
+	align-self: center;
 `;
 const ArticlePrice = styled.p`
-	border-left: 1px solid black;
 	margin-left: 3vmin;
 	align-self: center;
 `;
@@ -64,6 +74,7 @@ const IdentifiantContainer = styled.div`
 
 	& p {
 		margin-left: 1vmin;
+		align-self: center;
 	}
 `;
 
@@ -178,7 +189,7 @@ export default function Cart({
 	return (
 		<CartContainer>
 			{articlesCart?.length > 0 ? (
-				<ArticleDatasGlobalContainer>
+				<>
 					{articlesCart?.map((item) => (
 						<ArticleDatasContainer key={item.id}>
 							<IdentifiantContainer>
@@ -212,7 +223,7 @@ export default function Cart({
 							</ArticlePriceQuantite>
 						</ArticleDatasContainer>
 					))}
-				</ArticleDatasGlobalContainer>
+				</>
 			) : (
 				<h3>Votre panier est vide</h3>
 			)}

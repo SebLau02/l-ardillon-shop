@@ -26,26 +26,19 @@ const CategorySection = styled.section`
 	height: 5vh;
 	background: ${colors.marron};
 
-	select {
+	select,
+	button {
 		border: none;
-		border-radius: 0.8vmax;
-		padding: 0.3vmax;
+		border-radius: 1.3vmax;
+		padding: 0.8vmax;
 		font-size: clamp(0.8rem, 2vw, 1.2rem);
 		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 	}
-`;
-
-const ToLure = styled.button`
-	font-size: clamp(0.8rem, 2vw, 1.2rem);
-	border: none;
-	margin: 1vmax;
-	border-radius: 0.8vmax;
-	padding: 0.3vmax;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	button {
+		margin: 1vmax;
+	}
 `;
 
 //-----------------------------------------------------------------------------------------------
@@ -95,24 +88,20 @@ export default function SearchBar({
 		} else {
 			setFilteredLure(leurres);
 		}
-		navigate("/leurres");
 	};
 
 	return (
 		<>
 			<section className="search-bar-container">
-				<div
-					className="logo-container"
-					onClick={() => navigate("/leurres")}
-				>
+				<Link className="logo-container" to="/leurres">
 					<img
 						src={logoHook}
 						alt="retourner au menu principale"
 						className="logo-image"
 					/>
-				</div>
+				</Link>
 
-				<SearchContainer className="search-input-container">
+				<SearchContainer>
 					<input
 						type="search"
 						className="search-input"
@@ -140,7 +129,8 @@ export default function SearchBar({
 				</div>
 			</section>
 			<CategorySection>
-				<ToLure onClick={() => navigate("/leurres")}>Leurres</ToLure>
+				<button onClick={() => navigate("/leurres")}>Leurres</button>
+
 				<select value={typeLure} onChange={handleChangeCategory}>
 					<option value="tout">Tout</option>
 					<option value="leurre-dur">Leurre dur</option>
