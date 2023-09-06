@@ -3,7 +3,7 @@
 
 ## Fr
 C'est un site e-commerce qui propose du matériel de pêche. J'ai réalisé le site entièrement, le front est fait en **react** et le back avec **node** herbergé sur vercel. 
-Il reste encore beaucoup de chose à améliorer sur ce projet que ce soit sur l'esthétisme ou les fonctionnalités. 
+Il reste encore beaucoup de chose à améliorer sur ce projet que ce soit sur l'esthétisme ou les fonctionnalités, amélioration que j'apporterai dans le futur. 
 
 Je vous laisse le découvrir [ici](https://seblau02.github.io/l-ardillon-shop/)
 
