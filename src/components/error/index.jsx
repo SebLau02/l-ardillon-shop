@@ -16,7 +16,7 @@ const ErrorContainer = styled.section`
 		font-size: clamp(3rem, 3vw, 5rem);
 	}
 	img {
-		width: 40vmax;
+		width: 30vmax;
 	}
 `;
 
