@@ -1,8 +1,4 @@
-.name-brand-size-container {
-	font-size: clamp(0.8rem, 1vw, 1.2rem);
-}
 .products-container {
-	margin-top: 10vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -11,7 +7,7 @@
 }
 .product-image {
 	width: 100%;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 .img-container {
 	display: flex;

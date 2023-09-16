@@ -10,8 +10,8 @@ const StyledLink = styled(Link)`
 	display: grid;
 	grid-template-rows: 2fr 1fr;
 	grid-gap: 1vmin;
-	height: 28vmax;
-	width: 20vmax;
+	height: 20vmax;
+	width: 15vmax;
 	text-decoration: none;
 	color: black;
 	border: 1px solid ${colors.marron};
@@ -19,6 +19,7 @@ const StyledLink = styled(Link)`
 	padding: 2vmin;
 	background: ${colors.grey};
 	margin: 1vmin;
+	font-size: clamp(0.8rem, 1vw, 1.2rem);
 `;
 
 const NameBrandsize = styled.div`
@@ -58,21 +59,15 @@ export default function Leurres({
 												/>
 											</div>
 
-											<NameBrandsize className="name-brand-size-container">
-												<h3 className="product-name">
-													{item.name}
-												</h3>
-												<h3 className="product-brand">
-													{item.marque}
-												</h3>
+											<NameBrandsize>
+												<h3>{item.name}</h3>
+												<h3>{item.marque}</h3>
 												{item.size > 0 && (
-													<h3 className="product-price">
-														{item.size} mm
-													</h3>
+													<h3>{item.size} mm</h3>
 												)}
 											</NameBrandsize>
 										</StyledLink>
-									)
+									),
 						  )
 						: leurres?.map(
 								(item) =>
@@ -89,21 +84,15 @@ export default function Leurres({
 												/>
 											</div>
 
-											<NameBrandsize className="name-brand-size-container">
-												<h3 className="product-name">
-													{item.name}
-												</h3>
-												<h3 className="product-brand">
-													{item.marque}
-												</h3>
+											<NameBrandsize>
+												<h3>{item.name}</h3>
+												<h3>{item.marque}</h3>
 												{item.size > 0 && (
-													<h3 className="product-price">
-														{item.size} mm
-													</h3>
+													<h3>{item.size} mm</h3>
 												)}
 											</NameBrandsize>
 										</StyledLink>
-									)
+									),
 						  )}
 				</article>
 			)}

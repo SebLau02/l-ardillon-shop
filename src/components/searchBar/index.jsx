@@ -14,30 +14,24 @@ import { UserContext } from "../../utils/context";
 const SearchContainer = styled.div`
 	display: flex;
 	align-items: center;
-
-	margin-top: 1vmax;
-	}
 `;
 const CategorySection = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 5vh;
+	padding: 0.5vw;
 	background: ${colors.marron};
 
 	select,
 	button {
 		border: none;
-		border-radius: 1.3vmax;
-		padding: 0.8vmax;
+		border-radius: 1vmax;
+		padding: 0.5vmax 0.8vmax;
 		font-size: clamp(0.8rem, 2vw, 1.2rem);
-		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-	}
-	button {
-		margin: 1vmax;
+		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+			rgba(0, 0, 0, 0.23) 0px 6px 6px;
+		margin: 0 1vmax;
 	}
 `;
 

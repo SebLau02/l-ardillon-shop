@@ -13,10 +13,10 @@
 
 * {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 .App {
   margin-top: 10vh;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 html {
   font-size: 62.5%;
