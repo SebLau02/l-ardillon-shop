@@ -33,6 +33,10 @@ const CategorySection = styled.section`
 			rgba(0, 0, 0, 0.23) 0px 6px 6px;
 		margin: 0 1vmax;
 	}
+	select:hover,
+	button:hover {
+		background: #d6d6d6;
+	}
 `;
 
 //-----------------------------------------------------------------------------------------------
@@ -100,6 +104,7 @@ export default function SearchBar({
 						type="search"
 						className="search-input"
 						onKeyDown={handleSearchLeurre}
+						placeholder="Search"
 					/>
 				</SearchContainer>
 

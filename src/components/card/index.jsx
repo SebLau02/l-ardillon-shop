@@ -27,6 +27,7 @@ const Description = styled.div`
 
 	p {
 		margin-top: 1vmax;
+		line-height: 1.5;
 	}
 `;
 const Image = styled.img``;
@@ -64,6 +65,8 @@ export default function Card({
 		image: item.image,
 		colorName: item.colorName,
 	}));
+
+	console.log(articleDatas?.swimDepth);
 
 	useEffect(() => {
 		setInStock(articleDatas?.colors.inStock);
@@ -179,14 +182,6 @@ export default function Card({
 							</div>
 						</div>
 
-						<div className="name-price-container">
-							{articleDatas?.size > 0 && (
-								<p>Taille: {articleDatas?.size} mm</p>
-							)}
-
-							<p>Prix: {articleDatas?.colors[0].price} euro</p>
-						</div>
-
 						<div className="card-product-description">
 							<Description className="descriptions">
 								<button
@@ -241,6 +236,12 @@ export default function Card({
 									<p>
 										{articleDatas.weight &&
 											articleDatas.weight + "g"}
+									</p>
+									<p>
+										{articleDatas?.swimDepth &&
+											"Prof. nage " +
+												articleDatas?.swimDepth +
+												"cm"}
 									</p>
 									<p>
 										{item.inStock > 0

@@ -1,0 +1,55 @@
+.burger-menu {
+	position: absolute;
+	top: 3vmin;
+	right: 3vmin;
+	z-index: 5;
+	width: 3vmax;
+	height: 3vmax;
+	background: none;
+	border: none;
+}
+
+.ligne {
+	position: absolute;
+	display: block;
+	width: 80%;
+	height: 3px;
+	background: #0f0c0c;
+	border-radius: 3px;
+}
+
+.ligne-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.ligne-container > * {
+	left: 50%;
+	transform: translateX(-50%);
+	transition: transform 0.2s, top 0.2s 0.2s;
+}
+
+.ligne-container :nth-child(1) {
+	top: 30%;
+}
+.ligne-container :nth-child(2) {
+	top: 50%;
+}
+.ligne-container :nth-child(3) {
+	top: 70%;
+}
+.ligne.rotate-left {
+	transform: translateX(-50%) rotate(-135deg);
+	top: 50%;
+	transition: transform 0.2s 0.2s, top 0.2s;
+}
+.ligne.rotate {
+	transform: translateX(-50%) rotate(135deg);
+	top: 50%;
+	transition: transform 0.2s 0.2s, top 0.2s;
+}
+.ligne.rotate-right {
+	transform: translateX(-50%) rotate(135deg);
+	top: 50%;
+	transition: transform 0.2s 0.2s, top 0.2s;
+}

@@ -49,13 +49,12 @@ const SuggestContainer = styled.section`
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	width: fit-content;
 	border: 1px solid black;
 	border-radius: 2vmax;
 	padding: 1vmax;
 	margin: auto;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-	width: 60%;
+	width: 90%;
 
 	div {
 		display: flex;
@@ -79,13 +78,9 @@ const AddPack = styled.button`
 `;
 
 const AddSucced = styled.h2`
-	position: absolute;
-	z-index: 5;
-	top: 50%;
-	left: 50%;
+	margin-left: 2vw;
 	color: green;
-	font-size: clamp(3rem, 3vw, 4rem);
-	transform: translate(-50%, -50%);
+	font-size: clamp(2rem, 3vw, 3rem);
 `;
 
 export default function Accueil({
@@ -213,8 +208,8 @@ export default function Accueil({
 						>
 							Ajouter le pack
 						</AddPack>
+						{isAdd && <AddSucced>Pack ajouté ✔</AddSucced>}
 					</SuggestContainer>
-					{isAdd && <AddSucced>Pack ajouté ✔</AddSucced>}
 				</GlobalContainer>
 			)}
 		</>

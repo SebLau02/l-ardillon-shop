@@ -1,10 +1,12 @@
 import React, { useContext, useState, Fragment } from "react";
-import { useFetch } from "../../utils/hooks";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+import "./index.css";
+
+import { useFetch } from "../../utils/hooks";
 import profileLogo from "../../utils/images/profile-logo.svg";
 import { UserContext } from "../../utils/context";
-import styled from "styled-components";
-import "./index.css";
 import colors from "../../utils/style/colors";
 import Burger from "../../utils/images/burger.svg";
 import Loader from "../loader";
@@ -15,6 +17,7 @@ import apiUrl from "../../utils/api";
 const Article = styled.article`
 	padding: 5vmin;
 	position: relative;
+	height: 83vh;
 `;
 
 const ProfileContainer = styled.div`
@@ -56,6 +59,7 @@ const Nom = styled.span`
 	font-weight: 900;
 `;
 const AdresseContainer = styled.div`
+	margin: 1vw 0;
 	width: 25vmax;
 `;
 const Buttons = styled.button`
@@ -93,6 +97,17 @@ const Adresses = styled.div`
 `;
 const CommandesContainer = styled.div`
 	width: 25vmax;
+	p {
+		background: ${colors.kaki};
+		border: 1px solid black;
+		border-radius: 20px;
+		width: 100%;
+		padding: 2vmin;
+		margin: 1vmin 0;
+		line-height: 1.5;
+		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+			rgba(0, 0, 0, 0.23) 0px 6px 6px;
+	}
 `;
 const BurgerMenu = styled.button`
 	width: 3vmax;
@@ -115,7 +130,7 @@ const MenuSection = styled.section`
 	top: 0;
 	right: 0;
 	z-index: 4;
-	height: 100vh;
+	height: 100%;
 	width: 20vmax;
 	background: linear-gradient(
 		180deg,
@@ -288,13 +303,35 @@ export default function Profile() {
 						</Buttons>
 						{isCommandesVisible === true && <p>Mes commandes</p>}
 					</CommandesContainer>
-					<BurgerMenu
+
+					<button
+						className="burger-menu"
+						aria-label="menu"
 						onClick={() => {
 							setIsActiveMenu(!isActiveMenu);
 						}}
 					>
-						<img src={Burger} alt="menu logo" />
-					</BurgerMenu>
+						<div className="ligne-container">
+							<span
+								className={
+									isActiveMenu ? "ligne rotate-left" : "ligne"
+								}
+							></span>
+							<span
+								className={
+									isActiveMenu ? "ligne rotate" : "ligne"
+								}
+							></span>
+							<span
+								className={
+									isActiveMenu
+										? "ligne rotate-right"
+										: "ligne"
+								}
+							></span>
+						</div>
+					</button>
+
 					{isActiveMenu === true && (
 						<MenuSection>
 							<Deconexion onClick={deconnexion}>
