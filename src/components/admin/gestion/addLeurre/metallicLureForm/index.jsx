@@ -57,7 +57,9 @@ export default function MetallicLureForm({
 				/>
 			</label>
 			<label>
-				Size:
+				<p>
+					Size<sup>1</sup> (mm):
+				</p>
 				<input
 					required="required"
 					type="text"
@@ -66,7 +68,7 @@ export default function MetallicLureForm({
 				/>
 			</label>
 			<label>
-				Weight:
+				Weight (g):
 				<input
 					required="required"
 					type="text"
@@ -75,7 +77,9 @@ export default function MetallicLureForm({
 				/>
 			</label>
 			<label>
-				Famille:
+				<p>
+					Famille<sup>2</sup>:
+				</p>
 				<input
 					required="required"
 					type="text"
@@ -83,7 +87,13 @@ export default function MetallicLureForm({
 					onChange={(e) => setFamille(e.target.value)}
 				/>
 			</label>
+
 			<button type="submit">Ajouter</button>
+
+			<ul>
+				<li>1: si pas précisé mettre 0</li>
+				<li>2: mettre des mots clés</li>
+			</ul>
 		</form>
 	);
 }

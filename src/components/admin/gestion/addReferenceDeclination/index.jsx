@@ -63,7 +63,7 @@ export default function AddReferenceDeclination({ leurres, token }) {
 		inStock: colorStock,
 	};
 
-	const handleSeachFunc = (e) => {
+	const handleSearchFunc = (e) => {
 		setSearchValue(e.target.value.toLowerCase());
 
 		leurres.filter((el) => {
@@ -97,7 +97,7 @@ export default function AddReferenceDeclination({ leurres, token }) {
 		<section className="add-new-lure-color">
 			<SearchBarResultContainer>
 				<h3>Etape 2: trouver la référence du leurre</h3>
-				<SearchReferenceBar type="search" onChange={handleSeachFunc} />
+				<SearchReferenceBar type="search" onChange={handleSearchFunc} />
 
 				<Result
 					onClick={() => {
@@ -135,7 +135,7 @@ export default function AddReferenceDeclination({ leurres, token }) {
 							/>
 						</label>
 						<label>
-							Prix*:
+							Prix* (€):
 							<input
 								required="required"
 								type="text"

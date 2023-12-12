@@ -55,7 +55,7 @@ export default function SoftLureForm({
 				/>
 			</label>
 			<label>
-				Size:
+				Size (mm):
 				<input
 					required="required"
 					type="text"
@@ -64,7 +64,7 @@ export default function SoftLureForm({
 				/>
 			</label>
 			<label>
-				Famille:
+				Famille*:
 				<input
 					required="required"
 					type="text"
@@ -72,7 +72,12 @@ export default function SoftLureForm({
 					onChange={(e) => setFamille(e.target.value)}
 				/>
 			</label>
+
 			<button type="submit">Ajouter</button>
+
+			<ul>
+				<li>* mettre des mots clés</li>
+			</ul>
 		</form>
 	);
 }

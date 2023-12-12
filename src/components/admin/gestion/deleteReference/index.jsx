@@ -55,9 +55,9 @@ const Li = styled.li`
 
 //-----------------------------------------------------------------------------------------------
 
-//********** permet de supprimer une déclinaison d'une référence **********
+//********** permet de supprimer une déclinaison référence **********
 
-export default function ModifyReference({
+export default function DeleteReference({
 	leurres,
 	token,
 	serverRes,
@@ -67,10 +67,7 @@ export default function ModifyReference({
 }) {
 	const [searchValue, setSearchValue] = useState("");
 	const [filteredLure, setFilteredLure] = useState([]);
-	const [filteredLureId, setFilteredLureId] = useState();
-	const [refNameClicked, setRefNameClicked] = useState(false);
-	const [ids, setIds] = useState({});
-	const [colorId, setColorId] = useState();
+	const [referenceName, setReferenceName] = useState({});
 
 	const handleSeachFunc = (e) => {
 		setSearchValue(e.target.value.toLowerCase());
@@ -96,8 +93,8 @@ export default function ModifyReference({
 		e.preventDefault();
 
 		fetch(
-			apiUrl +
-				`/api/leurres/delete/delete-ref-declination/${ids.lureId}/${ids.colorId}`,
+			apiUrl + `/api/leurres/delete/${referenceName.id}`,
+
 			{
 				method: "delete",
 				headers: {
@@ -115,52 +112,26 @@ export default function ModifyReference({
 	};
 	return (
 		<section>
-			<h3>Etape 2: Trouver la référence à modifier </h3>
+			<h3>Etape 2: Trouver la référence à supprimer </h3>
 			<SearchInput type="search" onChange={handleSeachFunc} />
 			<Result>
 				<Li
 					onClick={() => {
-						setFilteredLureId(filteredLure.lureId);
-						setRefNameClicked(true);
-						setIds({ ...ids, lureId: filteredLure.id });
+						setReferenceName({
+							name: filteredLure.name,
+							id: filteredLure.id,
+						});
 					}}
 				>
 					{filteredLure.name}
 				</Li>
 			</Result>
 
-			{refNameClicked === true && (
-				<div>
-					<h3>Etape 3: Choisir le modèle à modifier</h3>
-					<Result>
-						{filteredLure?.colorsDatas?.map((item) => (
-							<Li
-								onClick={() => {
-									setColorId({
-										name: item.colorName,
-										id: item.colorId,
-									});
-									setIds({
-										...ids,
-										colorId: item.colorId,
-									});
-								}}
-							>
-								{item.colorName}
-							</Li>
-						))}
-					</Result>
-				</div>
-			)}
-
 			<form onSubmit={deleteRefDeclinFunc} className="delete-form">
 				<p>
-					Modèle: <Recap>{filteredLure.name}</Recap>
+					Référence à supprimer: <Recap>{referenceName.name}</Recap>
 				</p>
-				<p>
-					Référence à supprimer:
-					<Recap>{colorId?.name}</Recap>
-				</p>
+
 				<SubmitButton type="submit">Supp</SubmitButton>
 			</form>
 			<p>{serverRes}</p>

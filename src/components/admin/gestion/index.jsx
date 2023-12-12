@@ -1,10 +1,14 @@
 import React, { useState, useContext } from "react";
-import AddLeurre from "./addLeurre";
-import AddReferenceDeclination from "./addReferenceDeclination";
 import styled from "styled-components";
 import { UserContext } from "../../../utils/context";
+
+import AddLeurre from "./addLeurre";
+import AddReferenceDeclination from "./addReferenceDeclination";
 import ModifyReference from "./modifyReference";
 import StockManagement from "./stockManagement";
+import DeleteReference from "./deleteReference";
+import EditReference from "./editReference";
+
 import "./index.css";
 
 //-----------------------------------------------------------------------------------------------
@@ -51,6 +55,11 @@ export default function Gestion({ leurres }) {
 						Ajouter une déclinaison d'une référence
 					</option>
 					<option value="stock-management">Gérer les stocks</option>
+
+					<option value="edit-reference">Modifier référence</option>
+					<option value="delete-reference-declination">
+						Supprimer une déclinaison d'une référence
+					</option>
 					<option value="delete-a-reference">
 						Supprimer une référence
 					</option>
@@ -71,9 +80,27 @@ export default function Gestion({ leurres }) {
 					/>
 				) : whichFunction === "stock-management" ? (
 					<StockManagement leurres={leurres} token={token} />
+				) : whichFunction === "edit-reference" ? (
+					<EditReference
+						leurres={leurres}
+						token={token}
+						serverRes={serverRes}
+						setServerRes={setServerRes}
+						isLoading={isLoading}
+						setIsLoading={setIsLoading}
+					/>
+				) : whichFunction === "delete-reference-declination" ? (
+					<ModifyReference
+						leurres={leurres}
+						token={token}
+						serverRes={serverRes}
+						setServerRes={setServerRes}
+						isLoading={isLoading}
+						setIsLoading={setIsLoading}
+					/>
 				) : (
 					whichFunction === "delete-a-reference" && (
-						<ModifyReference
+						<DeleteReference
 							leurres={leurres}
 							token={token}
 							serverRes={serverRes}

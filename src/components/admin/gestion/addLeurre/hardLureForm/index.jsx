@@ -59,7 +59,7 @@ export default function HardLureForm({
 				/>
 			</label>
 			<label>
-				Size:
+				Size (mm):
 				<input
 					required="required"
 					type="text"
@@ -68,7 +68,7 @@ export default function HardLureForm({
 				/>
 			</label>
 			<label>
-				Weight:
+				Weight (g):
 				<input
 					required="required"
 					type="text"
@@ -77,7 +77,7 @@ export default function HardLureForm({
 				/>
 			</label>
 			<label>
-				SwimDepth:
+				SwimDepth (cm):
 				<input
 					required="required"
 					type="text"
@@ -86,7 +86,7 @@ export default function HardLureForm({
 				/>
 			</label>
 			<label>
-				Famille:
+				Famille*:
 				<input
 					required="required"
 					type="text"
@@ -96,6 +96,10 @@ export default function HardLureForm({
 			</label>
 
 			<button type="submit">Ajouter</button>
+
+			<ul>
+				<li>* mettre des mots clés</li>
+			</ul>
 		</form>
 	);
 }
