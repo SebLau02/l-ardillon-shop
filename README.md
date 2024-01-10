@@ -28,6 +28,6 @@ You can visit it [here](https://l-ardillon-shop.vercel.app/leurres)
 
 ### Images
 
-<img src="illustration/illlustration3.png" alt="lighthouse" width="800">
-<img src="illustration/illlustration2.png" alt="small screen" width="400">
+<img src="illustration/illustration3.png" alt="lighthouse" width="800">
+<img src="illustration/illustration2.png" alt="small screen" width="400">
 <img src="illustration/shop1-3.png" alt="laptop" width="800">
