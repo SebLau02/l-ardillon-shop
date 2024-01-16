@@ -24,7 +24,7 @@ Database is [here](https://github.com/SebLau02/l-ardillon-shop-back).
 
 You can visit it [here](https://l-ardillon-shop.vercel.app/leurres)
 
-### Technologies: React.Js, Node.Js
+### Technologies: React.Js
 
 ### Images
 
