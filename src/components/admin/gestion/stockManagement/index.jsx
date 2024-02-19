@@ -19,7 +19,8 @@ const Result = styled.p`
 	border-radius: 1vmax;
 	padding: 1vmax;
 	margin-top: 1vmax;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+	box-shadow:
+		rgba(0, 0, 0, 0.4) 0px 2px 4px,
 		rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
 		rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 `;
@@ -58,17 +59,13 @@ export default function StockManagement({ leurres, token, Button }) {
 	const [filteredLure, setFilteredLure] = useState([]);
 	const [isLureClicked, setIsLureClicked] = useState(false);
 	const [isRefClicked, setIsRefClicked] = useState(false);
-	const [colorName, setColorName] = useState();
-	const [newPrice, setNewPrice] = useState();
-	const [newStock, setNewStock] = useState();
+
 	const [colorImage, setColorImage] = useState();
+	const [colorName, setColorName] = useState();
+
 	const [servRes, setServRes] = useState();
-	const [reqBody, setReqBody] = useState({
-		leurreId: "",
-		colorId: "",
-		newPrice: null,
-		newStock: null,
-	});
+
+	const [modifiedRefDeclination, setModifiedRefDeclination] = useState({});
 
 	const handleSeachFunc = (e) => {
 		setSearchValue(e.target.value.toLowerCase());
@@ -89,7 +86,7 @@ export default function StockManagement({ leurres, token, Button }) {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify(reqBody),
+			body: JSON.stringify(modifiedRefDeclination),
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -105,7 +102,10 @@ export default function StockManagement({ leurres, token, Button }) {
 				<SearchReferenceBar type="search" onChange={handleSeachFunc} />
 				<Result
 					onClick={() => {
-						setReqBody({ ...reqBody, leurreId: filteredLure._id });
+						setModifiedRefDeclination({
+							...modifiedRefDeclination,
+							leurreId: filteredLure._id,
+						});
 
 						setIsLureClicked(true);
 					}}
@@ -121,19 +121,18 @@ export default function StockManagement({ leurres, token, Button }) {
 							key={color._id + color.colorName}
 							onClick={() => {
 								setIsRefClicked(true);
-								setNewPrice(color.price);
-								setNewStock(color.inStock);
-								setColorName(color.colorName);
 								setColorImage(color.image);
-								setReqBody({
-									...reqBody,
+								setColorName(color.colorName);
+
+								setModifiedRefDeclination({
+									...modifiedRefDeclination,
 									colorId: color._id,
-									newPrice: newPrice,
-									newStock: newStock,
+									newPrice: color.price,
+									newStock: color.inStock,
 								});
 							}}
 						>
-							<img src={color.image} alt="leurre" />
+							<img src={color.image} alt={color.colorName} />
 							<p>{color.colorName}</p>
 						</li>
 					))}
@@ -149,8 +148,8 @@ export default function StockManagement({ leurres, token, Button }) {
 						<input
 							required="required"
 							type="text"
-							value={colorName}
-							onChange={(e) => setColorName(e.target.value)}
+							defaultValue={colorName}
+							disabled
 						/>
 					</label>
 					<label>
@@ -158,13 +157,12 @@ export default function StockManagement({ leurres, token, Button }) {
 						<input
 							required="required"
 							type="number"
-							value={newPrice}
+							value={modifiedRefDeclination.newPrice}
 							onChange={(e) => {
-								setNewPrice(e.target.value);
-								setReqBody({
-									...reqBody,
+								setModifiedRefDeclination((prevValues) => ({
+									...prevValues,
 									newPrice: Number(e.target.value),
-								});
+								}));
 							}}
 						/>
 					</label>
@@ -173,13 +171,12 @@ export default function StockManagement({ leurres, token, Button }) {
 						<input
 							required="required"
 							type="number"
-							value={newStock}
+							value={modifiedRefDeclination.newStock || ""}
 							onChange={(e) => {
-								setNewStock(e.target.value);
-								setReqBody({
-									...reqBody,
+								setModifiedRefDeclination((prevValues) => ({
+									...prevValues,
 									newStock: Number(e.target.value),
-								});
+								}));
 							}}
 						/>
 					</label>
