@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function HardLureForm({
-	name,
-	description,
-	marque,
-	size,
-	swimDepth,
-	weight,
-	setName,
-	setDescription,
-	setMarque,
-	setCategory,
-	setSize,
-	setSwimDepth,
-	setWeight,
 	handleSubmit,
 	typeLure,
-	famille,
-	setFamille,
+	newLure,
+	setNewLure,
 }) {
+	useEffect(() => {
+		return () => {
+			console.log(newLure);
+		};
+	}, [newLure]);
 	return (
 		<form onSubmit={handleSubmit} method="POST">
 			<label>
@@ -26,8 +18,13 @@ export default function HardLureForm({
 				<input
 					required="required"
 					type="text"
-					value={name}
-					onChange={(e) => setName(e.target.value)}
+					value={newLure.name}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							name: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -36,8 +33,13 @@ export default function HardLureForm({
 					id="description"
 					className="description"
 					required={true}
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
+					value={newLure.description}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							description: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -45,26 +47,32 @@ export default function HardLureForm({
 				<input
 					required="required"
 					type="text"
-					value={marque}
-					onChange={(e) => setMarque(e.target.value)}
+					value={newLure.marque}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							marque: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
 				Categorie:
-				<input
-					required="required"
-					type="text"
-					value={typeLure}
-					onChange={(e) => setCategory(e.target.value)}
-				/>
+				<input required="required" type="text" value={typeLure} />
 			</label>
+
 			<label>
 				Size (mm):
 				<input
 					required="required"
 					type="text"
-					value={size}
-					onChange={(e) => setSize(e.target.value)}
+					value={newLure.size}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							size: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -72,8 +80,13 @@ export default function HardLureForm({
 				<input
 					required="required"
 					type="text"
-					value={weight}
-					onChange={(e) => setWeight(e.target.value)}
+					value={newLure.weight}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							weight: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -81,25 +94,31 @@ export default function HardLureForm({
 				<input
 					required="required"
 					type="text"
-					value={swimDepth}
-					onChange={(e) => setSwimDepth(e.target.value)}
+					value={newLure.swimDepth}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							swimDepth: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
-				Famille*:
+				Mots clé:
 				<input
 					required="required"
 					type="text"
-					value={famille}
-					onChange={(e) => setFamille(e.target.value)}
+					value={newLure.famille}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							famille: e.target.value,
+						}))
+					}
 				/>
 			</label>
 
 			<button type="submit">Ajouter</button>
-
-			<ul>
-				<li>* mettre des mots clés</li>
-			</ul>
 		</form>
 	);
 }

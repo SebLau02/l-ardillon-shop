@@ -1,21 +1,10 @@
 import React from "react";
 
 export default function MetallicLureForm({
-	name,
-	description,
-	marque,
-	size,
-	weight,
-	setName,
-	setDescription,
-	setMarque,
-	setCategory,
-	setSize,
-	setWeight,
 	handleSubmit,
 	typeLure,
-	famille,
-	setFamille,
+	newLure,
+	setNewLure,
 }) {
 	return (
 		<form onSubmit={handleSubmit} method="POST">
@@ -24,8 +13,13 @@ export default function MetallicLureForm({
 				<input
 					required="required"
 					type="text"
-					value={name}
-					onChange={(e) => setName(e.target.value)}
+					value={newLure.name}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							name: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -34,8 +28,13 @@ export default function MetallicLureForm({
 					id="description"
 					className="description"
 					required={true}
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
+					value={newLure.description}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							description: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -43,18 +42,18 @@ export default function MetallicLureForm({
 				<input
 					required="required"
 					type="text"
-					value={marque}
-					onChange={(e) => setMarque(e.target.value)}
+					value={newLure.marque}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							marque: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
 				Categorie:
-				<input
-					required="required"
-					type="text"
-					value={typeLure}
-					onChange={(e) => setCategory(e.target.value)}
-				/>
+				<input required="required" type="text" value={typeLure} />
 			</label>
 			<label>
 				<p>
@@ -63,8 +62,13 @@ export default function MetallicLureForm({
 				<input
 					required="required"
 					type="text"
-					value={size}
-					onChange={(e) => setSize(e.target.value)}
+					value={newLure.size}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							size: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
@@ -72,19 +76,27 @@ export default function MetallicLureForm({
 				<input
 					required="required"
 					type="text"
-					value={weight}
-					onChange={(e) => setWeight(e.target.value)}
+					value={newLure.weight}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							weight: e.target.value,
+						}))
+					}
 				/>
 			</label>
 			<label>
-				<p>
-					Famille<sup>2</sup>:
-				</p>
+				<p>Mot clé:</p>
 				<input
 					required="required"
 					type="text"
-					value={famille}
-					onChange={(e) => setFamille(e.target.value)}
+					value={newLure.famille}
+					onChange={(e) =>
+						setNewLure((prevValues) => ({
+							...prevValues,
+							famille: e.target.value,
+						}))
+					}
 				/>
 			</label>
 
@@ -92,7 +104,6 @@ export default function MetallicLureForm({
 
 			<ul>
 				<li>1: si pas précisé mettre 0</li>
-				<li>2: mettre des mots clés</li>
 			</ul>
 		</form>
 	);
